@@ -1,1 +1,1 @@
-include ':library', ':fmp-demo'
+include ':library', ':Starter'

@@ -81,7 +81,7 @@ JNIMediaPlayerListener::JNIMediaPlayerListener(JNIEnv* env, jobject thiz, jobjec
     // that posts events to the application thread.
     jclass clazz = env->GetObjectClass(thiz);
     if (clazz == NULL) {
-        __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "Can't find wseemann/media/FFmpegMediaPlayer");
+        __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "Can't find media/ffmpeg/FFmpegMediaPlayer");
         jniThrowException(env, "java/lang/Exception", NULL);
         return;
     }
@@ -205,7 +205,7 @@ static void process_media_player_call(JNIEnv *env, jobject thiz, int opStatus, c
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_setDataSourceAndHeaders(
+media_ffmpeg_FFmpegMediaPlayer_setDataSourceAndHeaders(
                                                          JNIEnv *env, jobject thiz, jstring path,
                                                          jobjectArray keys, jobjectArray values) {
     
@@ -296,7 +296,7 @@ static int jniGetFDFromFileDescriptor(JNIEnv * env, jobject fileDescriptor) {
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_setDataSourceFD(JNIEnv *env, jobject thiz, jobject fileDescriptor, jlong offset, jlong length)
+media_ffmpeg_FFmpegMediaPlayer_setDataSourceFD(JNIEnv *env, jobject thiz, jobject fileDescriptor, jlong offset, jlong length)
 {
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -375,13 +375,13 @@ setVideoSurface(JNIEnv *env, jobject thiz, jobject jsurface, jboolean mediaPlaye
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_setVideoSurface(JNIEnv *env, jobject thiz, jobject jsurface)
+media_ffmpeg_FFmpegMediaPlayer_setVideoSurface(JNIEnv *env, jobject thiz, jobject jsurface)
 {
     setVideoSurface(env, thiz, jsurface, true /* mediaPlayerMustBeAlive */);
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_prepare(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_prepare(JNIEnv *env, jobject thiz)
 {
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -398,7 +398,7 @@ wseemann_media_FFmpegMediaPlayer_prepare(JNIEnv *env, jobject thiz)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_prepareAsync(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_prepareAsync(JNIEnv *env, jobject thiz)
 {
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -415,7 +415,7 @@ wseemann_media_FFmpegMediaPlayer_prepareAsync(JNIEnv *env, jobject thiz)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_start(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_start(JNIEnv *env, jobject thiz)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "start");
     MediaPlayer* mp = getMediaPlayer(env, thiz);
@@ -427,7 +427,7 @@ wseemann_media_FFmpegMediaPlayer_start(JNIEnv *env, jobject thiz)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_stop(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_stop(JNIEnv *env, jobject thiz)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "stop");
     MediaPlayer* mp = getMediaPlayer(env, thiz);
@@ -439,7 +439,7 @@ wseemann_media_FFmpegMediaPlayer_stop(JNIEnv *env, jobject thiz)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_pause(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_pause(JNIEnv *env, jobject thiz)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "pause");
     MediaPlayer* mp = getMediaPlayer(env, thiz);
@@ -451,7 +451,7 @@ wseemann_media_FFmpegMediaPlayer_pause(JNIEnv *env, jobject thiz)
 }
 
 static jboolean
-wseemann_media_FFmpegMediaPlayer_isPlaying(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_isPlaying(JNIEnv *env, jobject thiz)
 {
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -465,7 +465,7 @@ wseemann_media_FFmpegMediaPlayer_isPlaying(JNIEnv *env, jobject thiz)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_seekTo(JNIEnv *env, jobject thiz, int msec)
+media_ffmpeg_FFmpegMediaPlayer_seekTo(JNIEnv *env, jobject thiz, int msec)
 {
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -477,7 +477,7 @@ wseemann_media_FFmpegMediaPlayer_seekTo(JNIEnv *env, jobject thiz, int msec)
 }
 
 static int
-wseemann_media_FFmpegMediaPlayer_getVideoWidth(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_getVideoWidth(JNIEnv *env, jobject thiz)
 {
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -494,7 +494,7 @@ wseemann_media_FFmpegMediaPlayer_getVideoWidth(JNIEnv *env, jobject thiz)
 }
 
 static int
-wseemann_media_FFmpegMediaPlayer_getVideoHeight(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_getVideoHeight(JNIEnv *env, jobject thiz)
 {
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -512,7 +512,7 @@ wseemann_media_FFmpegMediaPlayer_getVideoHeight(JNIEnv *env, jobject thiz)
 
 
 static int
-wseemann_media_FFmpegMediaPlayer_getCurrentPosition(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_getCurrentPosition(JNIEnv *env, jobject thiz)
 {
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -526,7 +526,7 @@ wseemann_media_FFmpegMediaPlayer_getCurrentPosition(JNIEnv *env, jobject thiz)
 }
 
 static int
-wseemann_media_FFmpegMediaPlayer_getDuration(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_getDuration(JNIEnv *env, jobject thiz)
 {
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -540,7 +540,7 @@ wseemann_media_FFmpegMediaPlayer_getDuration(JNIEnv *env, jobject thiz)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_reset(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_reset(JNIEnv *env, jobject thiz)
 {
     __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, "reset");
     MediaPlayer* mp = getMediaPlayer(env, thiz);
@@ -552,7 +552,7 @@ wseemann_media_FFmpegMediaPlayer_reset(JNIEnv *env, jobject thiz)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_setAudioStreamType(JNIEnv *env, jobject thiz, int streamtype)
+media_ffmpeg_FFmpegMediaPlayer_setAudioStreamType(JNIEnv *env, jobject thiz, int streamtype)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "setAudioStreamType: %d", streamtype);
     MediaPlayer* mp = getMediaPlayer(env, thiz);
@@ -564,7 +564,7 @@ wseemann_media_FFmpegMediaPlayer_setAudioStreamType(JNIEnv *env, jobject thiz, i
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_setLooping(JNIEnv *env, jobject thiz, jboolean looping)
+media_ffmpeg_FFmpegMediaPlayer_setLooping(JNIEnv *env, jobject thiz, jboolean looping)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "setLooping: %d", looping);
     MediaPlayer* mp = getMediaPlayer(env, thiz);
@@ -576,7 +576,7 @@ wseemann_media_FFmpegMediaPlayer_setLooping(JNIEnv *env, jobject thiz, jboolean 
 }
 
 static jboolean
-wseemann_media_FFmpegMediaPlayer_isLooping(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_isLooping(JNIEnv *env, jobject thiz)
 {
     __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, "isLooping");
     MediaPlayer* mp = getMediaPlayer(env, thiz);
@@ -588,7 +588,7 @@ wseemann_media_FFmpegMediaPlayer_isLooping(JNIEnv *env, jobject thiz)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_setVolume(JNIEnv *env, jobject thiz, float leftVolume, float rightVolume)
+media_ffmpeg_FFmpegMediaPlayer_setVolume(JNIEnv *env, jobject thiz, float leftVolume, float rightVolume)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "setVolume: left %f  right %f", leftVolume, rightVolume);
     MediaPlayer* mp = getMediaPlayer(env, thiz);
@@ -601,7 +601,7 @@ wseemann_media_FFmpegMediaPlayer_setVolume(JNIEnv *env, jobject thiz, float left
 
 // Sends the new filter to the client.
 static jint
-wseemann_media_FFmpegMediaPlayer_setMetadataFilter(JNIEnv *env, jobject thiz, jobjectArray allow, jobjectArray block)
+media_ffmpeg_FFmpegMediaPlayer_setMetadataFilter(JNIEnv *env, jobject thiz, jobjectArray allow, jobjectArray block)
 {
     MediaPlayer* media_player = getMediaPlayer(env, thiz);
     if (media_player == NULL ) {
@@ -634,7 +634,7 @@ wseemann_media_FFmpegMediaPlayer_setMetadataFilter(JNIEnv *env, jobject thiz, jo
 }
 
 static jobject
-wseemann_media_FFmpegMediaPlayer_getMetadata(JNIEnv *env, jobject thiz, jboolean update_only,
+media_ffmpeg_FFmpegMediaPlayer_getMetadata(JNIEnv *env, jobject thiz, jboolean update_only,
                                              jboolean apply_filter, jobject reply)
 {
     MediaPlayer* media_player = getMediaPlayer(env, thiz);
@@ -680,12 +680,12 @@ wseemann_media_FFmpegMediaPlayer_getMetadata(JNIEnv *env, jobject thiz, jboolean
 // It is called from a static block in MediaPlayer, which won't run until the
 // first time an instance of this class is used.
 static void
-wseemann_media_FFmpegMediaPlayer_native_init(JNIEnv *env)
+media_ffmpeg_FFmpegMediaPlayer_native_init(JNIEnv *env)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "native_init");
     jclass clazz;
     
-    clazz = env->FindClass("wseemann/media/FFmpegMediaPlayer");
+    clazz = env->FindClass("media/ffmpeg/FFmpegMediaPlayer");
     if (clazz == NULL) {
         return;
     }
@@ -712,7 +712,7 @@ wseemann_media_FFmpegMediaPlayer_native_init(JNIEnv *env)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_native_setup(JNIEnv *env, jobject thiz, jobject weak_this)
+media_ffmpeg_FFmpegMediaPlayer_native_setup(JNIEnv *env, jobject thiz, jobject weak_this)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "native_setup");
     MediaPlayer* mp = new MediaPlayer();
@@ -730,7 +730,7 @@ wseemann_media_FFmpegMediaPlayer_native_setup(JNIEnv *env, jobject thiz, jobject
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_release(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_release(JNIEnv *env, jobject thiz)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "release");
     //decVideoSurfaceRef(env, thiz);
@@ -748,17 +748,17 @@ wseemann_media_FFmpegMediaPlayer_release(JNIEnv *env, jobject thiz)
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_native_finalize(JNIEnv *env, jobject thiz)
+media_ffmpeg_FFmpegMediaPlayer_native_finalize(JNIEnv *env, jobject thiz)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "native_finalize");
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp != NULL) {
         __android_log_print(ANDROID_LOG_WARN, LOG_TAG, "MediaPlayer finalized without being released");
     }
-    wseemann_media_FFmpegMediaPlayer_release(env, thiz);
+    media_ffmpeg_FFmpegMediaPlayer_release(env, thiz);
 }
 
-static void wseemann_media_FFmpegMediaPlayer_set_audio_session_id(JNIEnv *env,  jobject thiz, jint sessionId) {
+static void media_ffmpeg_FFmpegMediaPlayer_set_audio_session_id(JNIEnv *env,  jobject thiz, jint sessionId) {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "set_session_id(): %d", sessionId);
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -768,7 +768,7 @@ static void wseemann_media_FFmpegMediaPlayer_set_audio_session_id(JNIEnv *env,  
     process_media_player_call( env, thiz, mp->setAudioSessionId(sessionId), NULL, NULL );
 }
 
-static jint wseemann_media_FFmpegMediaPlayer_get_audio_session_id(JNIEnv *env,  jobject thiz) {
+static jint media_ffmpeg_FFmpegMediaPlayer_get_audio_session_id(JNIEnv *env,  jobject thiz) {
     __android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, "get_session_id()");
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -780,7 +780,7 @@ static jint wseemann_media_FFmpegMediaPlayer_get_audio_session_id(JNIEnv *env,  
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_setAuxEffectSendLevel(JNIEnv *env, jobject thiz, jfloat level)
+media_ffmpeg_FFmpegMediaPlayer_setAuxEffectSendLevel(JNIEnv *env, jobject thiz, jfloat level)
 {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "setAuxEffectSendLevel: level %f", level);
     MediaPlayer* mp = getMediaPlayer(env, thiz);
@@ -791,7 +791,7 @@ wseemann_media_FFmpegMediaPlayer_setAuxEffectSendLevel(JNIEnv *env, jobject thiz
     process_media_player_call( env, thiz, mp->setAuxEffectSendLevel(level), NULL, NULL );
 }
 
-static void wseemann_media_FFmpegMediaPlayer_attachAuxEffect(JNIEnv *env,  jobject thiz, jint effectId) {
+static void media_ffmpeg_FFmpegMediaPlayer_attachAuxEffect(JNIEnv *env,  jobject thiz, jint effectId) {
     __android_log_print(ANDROID_LOG_VERBOSE, LOG_TAG, "attachAuxEffect(): %d", effectId);
     MediaPlayer* mp = getMediaPlayer(env, thiz);
     if (mp == NULL ) {
@@ -802,7 +802,7 @@ static void wseemann_media_FFmpegMediaPlayer_attachAuxEffect(JNIEnv *env,  jobje
 }
 
 static void
-wseemann_media_FFmpegMediaPlayer_setNextMediaPlayer(JNIEnv *env, jobject thiz, jobject java_player)
+media_ffmpeg_FFmpegMediaPlayer_setNextMediaPlayer(JNIEnv *env, jobject thiz, jobject java_player)
 {
     /*__android_log_write(ANDROID_LOG_VERBOSE, LOG_TAG, "setNextMediaPlayer");
     MediaPlayer* thisplayer = getMediaPlayer(env, thiz);
@@ -834,53 +834,53 @@ static JNINativeMethod gMethods[] = {
     {
         "_setDataSource",
         "(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V",
-        (void *)wseemann_media_FFmpegMediaPlayer_setDataSourceAndHeaders
+        (void *)media_ffmpeg_FFmpegMediaPlayer_setDataSourceAndHeaders
     },
     
-    {"_setDataSource",       "(Ljava/io/FileDescriptor;JJ)V",    (void *)wseemann_media_FFmpegMediaPlayer_setDataSourceFD},
-    {"_setVideoSurface",    "(Landroid/view/Surface;)V",        (void *)wseemann_media_FFmpegMediaPlayer_setVideoSurface},
-    {"prepare",             "()V",                              (void *)wseemann_media_FFmpegMediaPlayer_prepare},
-    {"prepareAsync",        "()V",                              (void *)wseemann_media_FFmpegMediaPlayer_prepareAsync},
-    {"_start",              "()V",                              (void *)wseemann_media_FFmpegMediaPlayer_start},
-    {"_stop",               "()V",                              (void *)wseemann_media_FFmpegMediaPlayer_stop},
-    {"getVideoWidth",       "()I",                              (void *)wseemann_media_FFmpegMediaPlayer_getVideoWidth},
-    {"getVideoHeight",      "()I",                              (void *)wseemann_media_FFmpegMediaPlayer_getVideoHeight},
-    {"seekTo",              "(I)V",                             (void *)wseemann_media_FFmpegMediaPlayer_seekTo},
-    {"_pause",              "()V",                              (void *)wseemann_media_FFmpegMediaPlayer_pause},
-    {"isPlaying",           "()Z",                              (void *)wseemann_media_FFmpegMediaPlayer_isPlaying},
-    {"getCurrentPosition",  "()I",                              (void *)wseemann_media_FFmpegMediaPlayer_getCurrentPosition},
-    {"getDuration",         "()I",                              (void *)wseemann_media_FFmpegMediaPlayer_getDuration},
-    {"_release",            "()V",                              (void *)wseemann_media_FFmpegMediaPlayer_release},
-    {"_reset",              "()V",                              (void *)wseemann_media_FFmpegMediaPlayer_reset},
-    {"setAudioStreamType",  "(I)V",                             (void *)wseemann_media_FFmpegMediaPlayer_setAudioStreamType},
-    {"setLooping",          "(Z)V",                             (void *)wseemann_media_FFmpegMediaPlayer_setLooping},
-    {"isLooping",           "()Z",                              (void *)wseemann_media_FFmpegMediaPlayer_isLooping},
-    {"setVolume",           "(FF)V",                            (void *)wseemann_media_FFmpegMediaPlayer_setVolume},
-    {"native_setMetadataFilter", "([Ljava/lang/String;[Ljava/lang/String;)I", (void *)wseemann_media_FFmpegMediaPlayer_setMetadataFilter},
-    {"native_getMetadata", "(ZZLjava/util/HashMap;)Ljava/util/HashMap;", (void *)wseemann_media_FFmpegMediaPlayer_getMetadata},
-    {"native_init",         "()V",                              (void *)wseemann_media_FFmpegMediaPlayer_native_init},
-    {"native_setup",        "(Ljava/lang/Object;)V",          (void *)wseemann_media_FFmpegMediaPlayer_native_setup},
-    {"native_finalize",     "()V",                              (void *)wseemann_media_FFmpegMediaPlayer_native_finalize},
-    {"getAudioSessionId",   "()I",                              (void *)wseemann_media_FFmpegMediaPlayer_get_audio_session_id},
-    {"setAudioSessionId",   "(I)V",                             (void *)wseemann_media_FFmpegMediaPlayer_set_audio_session_id},
-    {"setAuxEffectSendLevel", "(F)V",                           (void *)wseemann_media_FFmpegMediaPlayer_setAuxEffectSendLevel},
-    {"attachAuxEffect",     "(I)V",                             (void *)wseemann_media_FFmpegMediaPlayer_attachAuxEffect},
-    {"setNextMediaPlayer", "(Lwseemann/media/FFmpegMediaPlayer;)V", (void *)wseemann_media_FFmpegMediaPlayer_setNextMediaPlayer},
+    {"_setDataSource",       "(Ljava/io/FileDescriptor;JJ)V",    (void *)media_ffmpeg_FFmpegMediaPlayer_setDataSourceFD},
+    {"_setVideoSurface",    "(Landroid/view/Surface;)V",        (void *)media_ffmpeg_FFmpegMediaPlayer_setVideoSurface},
+    {"prepare",             "()V",                              (void *)media_ffmpeg_FFmpegMediaPlayer_prepare},
+    {"prepareAsync",        "()V",                              (void *)media_ffmpeg_FFmpegMediaPlayer_prepareAsync},
+    {"_start",              "()V",                              (void *)media_ffmpeg_FFmpegMediaPlayer_start},
+    {"_stop",               "()V",                              (void *)media_ffmpeg_FFmpegMediaPlayer_stop},
+    {"getVideoWidth",       "()I",                              (void *)media_ffmpeg_FFmpegMediaPlayer_getVideoWidth},
+    {"getVideoHeight",      "()I",                              (void *)media_ffmpeg_FFmpegMediaPlayer_getVideoHeight},
+    {"seekTo",              "(I)V",                             (void *)media_ffmpeg_FFmpegMediaPlayer_seekTo},
+    {"_pause",              "()V",                              (void *)media_ffmpeg_FFmpegMediaPlayer_pause},
+    {"isPlaying",           "()Z",                              (void *)media_ffmpeg_FFmpegMediaPlayer_isPlaying},
+    {"getCurrentPosition",  "()I",                              (void *)media_ffmpeg_FFmpegMediaPlayer_getCurrentPosition},
+    {"getDuration",         "()I",                              (void *)media_ffmpeg_FFmpegMediaPlayer_getDuration},
+    {"_release",            "()V",                              (void *)media_ffmpeg_FFmpegMediaPlayer_release},
+    {"_reset",              "()V",                              (void *)media_ffmpeg_FFmpegMediaPlayer_reset},
+    {"setAudioStreamType",  "(I)V",                             (void *)media_ffmpeg_FFmpegMediaPlayer_setAudioStreamType},
+    {"setLooping",          "(Z)V",                             (void *)media_ffmpeg_FFmpegMediaPlayer_setLooping},
+    {"isLooping",           "()Z",                              (void *)media_ffmpeg_FFmpegMediaPlayer_isLooping},
+    {"setVolume",           "(FF)V",                            (void *)media_ffmpeg_FFmpegMediaPlayer_setVolume},
+    {"native_setMetadataFilter", "([Ljava/lang/String;[Ljava/lang/String;)I", (void *)media_ffmpeg_FFmpegMediaPlayer_setMetadataFilter},
+    {"native_getMetadata", "(ZZLjava/util/HashMap;)Ljava/util/HashMap;", (void *)media_ffmpeg_FFmpegMediaPlayer_getMetadata},
+    {"native_init",         "()V",                              (void *)media_ffmpeg_FFmpegMediaPlayer_native_init},
+    {"native_setup",        "(Ljava/lang/Object;)V",          (void *)media_ffmpeg_FFmpegMediaPlayer_native_setup},
+    {"native_finalize",     "()V",                              (void *)media_ffmpeg_FFmpegMediaPlayer_native_finalize},
+    {"getAudioSessionId",   "()I",                              (void *)media_ffmpeg_FFmpegMediaPlayer_get_audio_session_id},
+    {"setAudioSessionId",   "(I)V",                             (void *)media_ffmpeg_FFmpegMediaPlayer_set_audio_session_id},
+    {"setAuxEffectSendLevel", "(F)V",                           (void *)media_ffmpeg_FFmpegMediaPlayer_setAuxEffectSendLevel},
+    {"attachAuxEffect",     "(I)V",                             (void *)media_ffmpeg_FFmpegMediaPlayer_attachAuxEffect},
+    {"setNextMediaPlayer", "(Lmedia/ffmpeg/FFmpegMediaPlayer;)V", (void *)media_ffmpeg_FFmpegMediaPlayer_setNextMediaPlayer},
 };
 
-static const char* const kClassPathName = "wseemann/media/FFmpegMediaPlayer";
+static const char* const kClassPathName = "media/ffmpeg/FFmpegMediaPlayer";
 
 // This function only registers the native methods
-static int register_wseemann_media_FFmpegMediaPlayer(JNIEnv *env)
+static int register_media_ffmpeg_FFmpegMediaPlayer(JNIEnv *env)
 {
     int numMethods = (sizeof(gMethods) / sizeof( (gMethods)[0]));
-    jclass clazz = env->FindClass("wseemann/media/FFmpegMediaPlayer");
+    jclass clazz = env->FindClass("media/ffmpeg/FFmpegMediaPlayer");
     if (clazz == NULL) {
-        __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "Native registration unable to find class 'wseemann/media/FFmpegMediaPlayer'");
+        __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "Native registration unable to find class 'media/ffmpeg/FFmpegMediaPlayer'");
         return JNI_ERR;
     }
     if (env->RegisterNatives(clazz, gMethods, numMethods) < 0) {
-        __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "RegisterNatives failed for 'wseemann/media/FFmpegMediaPlayer'");
+        __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "RegisterNatives failed for 'media/ffmpeg/FFmpegMediaPlayer'");
         return JNI_ERR;
     }
     env->DeleteLocalRef(clazz);
@@ -900,7 +900,7 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved)
     }
     assert(env != NULL);
     
-    if (register_wseemann_media_FFmpegMediaPlayer(env) < 0) {
+    if (register_media_ffmpeg_FFmpegMediaPlayer(env) < 0) {
         __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "ERROR: FFmpegMediaPlayer native registration failed\n");
         goto bail;
     }

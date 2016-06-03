@@ -17,7 +17,7 @@
 extern void SDL_Android_Init(JNIEnv* env, jclass cls);
 
 /* Start up the SDL app */
-JNIEXPORT int JNICALL Java_wseemann_media_FFmpegMediaPlayer_nativeInit(JNIEnv* env, jclass cls, jobject array)
+JNIEXPORT int JNICALL Java_media_ffmpeg_FFmpegMediaPlayer_nativeInit(JNIEnv* env, jclass cls, jobject array)
 {
     int i;
     int argc;

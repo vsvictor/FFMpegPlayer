@@ -1,5 +1,3 @@
-William Seemann <wseemann@gmail.com>
-
 [PATCH 3/3] Fix ‘UINT64_C’ was not declared in this scope error
 ---
 

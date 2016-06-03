@@ -15,19 +15,19 @@ set -e
 export TARGET=$1
 
 ARM_PLATFORM=$NDK/platforms/android-9/arch-arm/
-ARM_PREBUILT=$NDK/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64
+ARM_PREBUILT=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64
 
 ARM64_PLATFORM=$NDK/platforms/android-21/arch-arm64/
-ARM64_PREBUILT=$NDK/toolchains/aarch64-linux-android-4.9/prebuilt/darwin-x86_64
+ARM64_PREBUILT=$NDK/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64
 
 X86_PLATFORM=$NDK/platforms/android-9/arch-x86/
-X86_PREBUILT=$NDK/toolchains/x86-4.9/prebuilt/darwin-x86_64
+X86_PREBUILT=$NDK/toolchains/x86-4.9/prebuilt/linux-x86_64
 
 X86_64_PLATFORM=$NDK/platforms/android-21/arch-x86_64/
-X86_64_PREBUILT=$NDK/toolchains/x86_64-4.9/prebuilt/darwin-x86_64
+X86_64_PREBUILT=$NDK/toolchains/x86_64-4.9/prebuilt/linux-x86_64
 
 MIPS_PLATFORM=$NDK/platforms/android-9/arch-mips/
-MIPS_PREBUILT=$NDK/toolchains/mipsel-linux-android-4.8/prebuilt/darwin-x86_64
+MIPS_PREBUILT=$NDK/toolchains/mipsel-linux-android-4.9/prebuilt/linux-x86_64
 
 BUILD_DIR=`pwd`/ffmpeg-android
 

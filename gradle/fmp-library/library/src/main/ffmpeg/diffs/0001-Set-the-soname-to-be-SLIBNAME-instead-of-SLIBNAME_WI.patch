@@ -1,5 +1,3 @@
-William Seemann <wseemann@gmail.com>
-
 [PATCH 1/3] Set the soname to be $(SLIBNAME) instead of $(SLIBNAME_WITH_MAJOR)
 
 Both due to the ways the android linker works, and due to the apk
